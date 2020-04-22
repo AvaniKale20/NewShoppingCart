@@ -23,4 +23,14 @@ public class ShoppingCartTest {
         Assertions.assertEquals(4.95, cartTotal);
 
     }
+
+    @Test
+    void givenEmptyShoppingCart_whenAddOneMask_thenShouldReturnTotalCartPriceOnrPointNineNine() {
+        ShoppingCart shoppingCart = new ShoppingCart("mask", 1, 1.99);
+
+        double cartTotal = shoppingCart.calculateTotalCart();
+
+        Assertions.assertEquals(1.99, cartTotal);
+
+    }
 }
