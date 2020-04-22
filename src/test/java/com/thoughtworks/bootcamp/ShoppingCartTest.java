@@ -16,7 +16,7 @@ public class ShoppingCartTest {
 
         double cartTotal = shoppingCart.calculateTotalCart();
 
-        Assertions.assertEquals(0.99, cartTotal);
+        Assertions.assertEquals(1.01, cartTotal);
 
     }
 
@@ -30,7 +30,7 @@ public class ShoppingCartTest {
 
         double cartTotal = shoppingCart.calculateTotalCart();
 
-        Assertions.assertEquals(4.95, cartTotal);
+        Assertions.assertEquals(5.05, cartTotal);
 
     }
 
@@ -44,7 +44,7 @@ public class ShoppingCartTest {
 
         double cartTotal = shoppingCart.calculateTotalCart();
 
-        Assertions.assertEquals(1.99, cartTotal);
+        Assertions.assertEquals(2.03, cartTotal);
 
     }
 
@@ -60,7 +60,7 @@ public class ShoppingCartTest {
         ShoppingCart shoppingCart = new ShoppingCart(products);
         double cartTotal = shoppingCart.calculateTotalCart();
 
-        Assertions.assertEquals(2.98, cartTotal);
+        Assertions.assertEquals(3.04, cartTotal);
 
     }
     @Test
@@ -75,7 +75,7 @@ public class ShoppingCartTest {
         ShoppingCart shoppingCart = new ShoppingCart(products);
         double cartTotal = shoppingCart.calculateTotalCart();
 
-        Assertions.assertEquals(8.94, cartTotal);
+        Assertions.assertEquals(9.12, cartTotal);
 
     }
     @Test
