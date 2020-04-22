@@ -83,7 +83,7 @@ public class ShoppingCartTest {
         Product productOne = new Product("apple", 3, 0.99);
         Product productTwo = new Product("mask", 3, 1.99);
 
-        ArrayList<Product> products = new ArrayList<Product>();
+        ArrayList<Product> products = new ArrayList<>();
         products.add(productOne);
         products.add(productTwo);
 
