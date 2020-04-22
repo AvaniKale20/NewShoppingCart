@@ -13,4 +13,14 @@ public class ShoppingCartTest {
         Assertions.assertEquals(0.99, cartTotal);
 
     }
+
+    @Test
+    void givenEmptyShoppingCart_whenAddFiveApple_thenShouldReturnPriceOfFiveApple() {
+        ShoppingCart shoppingCart = new ShoppingCart("apple", 5, 0.99);
+
+        double cartTotal = shoppingCart.calculateCartTotal();
+
+        Assertions.assertEquals(4.95, cartTotal);
+
+    }
 }
