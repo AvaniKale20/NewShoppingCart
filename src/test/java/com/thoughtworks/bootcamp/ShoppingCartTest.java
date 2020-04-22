@@ -49,7 +49,7 @@ public class ShoppingCartTest {
     }
 
     @Test
-    void givenEmptyShoppingCart_whenAddThreeMaskAndThreeApple_thenShouldReturnTotalCartPriceTwoPointNineEight() {
+    void givenEmptyShoppingCart_whenAddOneMaskAndOneApple_thenShouldReturnTotalCartPriceTwoPointNineEight() {
         Product productOne = new Product("apple", 1, 0.99);
         Product productTwo = new Product("mask", 1, 1.99);
 
@@ -63,4 +63,5 @@ public class ShoppingCartTest {
         Assertions.assertEquals(2.98, cartTotal);
 
     }
+
 }
