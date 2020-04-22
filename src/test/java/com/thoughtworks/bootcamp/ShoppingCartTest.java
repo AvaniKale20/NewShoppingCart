@@ -78,5 +78,20 @@ public class ShoppingCartTest {
         Assertions.assertEquals(8.94, cartTotal);
 
     }
+    @Test
+    void givenEmptyShoppingCart_whenAddThreeMaskAndThreeApple_thenShouldReturnTotalCartPriceWithTax() {
+        Product productOne = new Product("apple", 3, 0.99);
+        Product productTwo = new Product("mask", 3, 1.99);
+
+        ArrayList<Product> products = new ArrayList<Product>();
+        products.add(productOne);
+        products.add(productTwo);
+
+        ShoppingCart shoppingCart = new ShoppingCart(products);
+        double cartTotal = shoppingCart.calculateTotalCart();
+
+        Assertions.assertEquals(9.12, cartTotal);
+
+    }
 
 }
