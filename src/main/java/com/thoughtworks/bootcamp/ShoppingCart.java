@@ -1,18 +1,19 @@
 package com.thoughtworks.bootcamp;
 
-public class ShoppingCart {
-    private String productName;
-    private int quantity;
-    private double price;
+import java.util.ArrayList;
 
-    public ShoppingCart(String productName, int quantity, double price) {
-        this.productName = productName;
-        this.quantity = quantity;
-        this.price = price;
+public class ShoppingCart {
+    ArrayList<Product> products;
+    double cartTotal;
+
+    public ShoppingCart(ArrayList<Product> products) {
+        this.products = products;
     }
 
     public double calculateTotalCart() {
-        double cartTotal = quantity * price;
+        for (Product item : products) {
+            cartTotal =cartTotal+ item.quantity * item.price;
+        }
         return cartTotal;
     }
 }
