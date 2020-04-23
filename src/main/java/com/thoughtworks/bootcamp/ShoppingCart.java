@@ -1,25 +1,48 @@
 package com.thoughtworks.bootcamp;
 
-import java.util.Arrays;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ShoppingCart {
-    private ArrayList<Product> products;
-    private double totalCart;
-    static final double salesTax = 0.02;
 
-    public ShoppingCart(ArrayList<Product> products) {
-        this.products = products;
+    private double amount;
+    private static final double salesTaxPercent = 0.02;
+    private double total = 0.0;
+    Map<String, Integer> productQuantities = new HashMap<>();
+
+
+    public int getQuantity(String name) {
+        return productQuantities.get(name);
     }
 
-    public List<Double> calculateTotalCart() {
-        for (Product item : products) {
-            totalCart = totalCart + item.quantity * item.price;
+    public double getTotalCartWithTax() {
+        return total;
+    }
+
+    public double getSalesTax() {
+        return format(total - amount);
+    }
+
+    public void addCart(Product product, int quantity) {
+        incrementQuantity(product, quantity);
+        amount += getProductTotal(product, quantity);
+        total = format(amount * (1 + salesTaxPercent));
+    }
+
+    private double getProductTotal(Product product, int quantity) {
+        return product.getPrice() * quantity;
+    }
+
+    private void incrementQuantity(Product product, int quantity) {
+        if (productQuantities.containsKey(product.getName())) {
+            Integer existingQuantity = productQuantities.get(product.getName());
+            productQuantities.put(product.getName(), existingQuantity + quantity);
+            return;
         }
-        double totalCartWithTax = Double.parseDouble(new DecimalFormat("##.##").format(totalCart * (1 + salesTax)));
-        double salesTax = Double.parseDouble(new DecimalFormat("##.##").format(totalCartWithTax - totalCart));
-        return Arrays.asList(salesTax, totalCartWithTax);
+        productQuantities.put(product.getName(), quantity);
+    }
+
+    private double format(double value) {
+        return Double.parseDouble(new DecimalFormat("##.##").format(value));
     }
 }

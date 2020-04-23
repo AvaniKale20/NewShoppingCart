@@ -1,14 +1,20 @@
 package com.thoughtworks.bootcamp;
 
 public class Product {
-    private String productName;
-    public int quantity;
-    public double price;
+    private String name;
+    private double price;
 
 
-    public Product(String productName, int quantity, double price) {
-        this.productName = productName;
-        this.quantity = quantity;
+    public Product(String name, double price) {
+        this.name = name;
         this.price = price;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public double getPrice() {
+        return this.price;
     }
 }
