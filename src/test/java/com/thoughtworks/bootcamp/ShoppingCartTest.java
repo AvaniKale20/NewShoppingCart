@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ShoppingCartTest {
     @Test
@@ -14,9 +15,10 @@ public class ShoppingCartTest {
 
         ShoppingCart shoppingCart = new ShoppingCart(products);
 
-        double cartTotal = shoppingCart.calculateTotalCart();
+        List<Double> cartTotal = shoppingCart.calculateTotalCart();
 
-        Assertions.assertEquals(1.01, cartTotal);
+        Assertions.assertEquals(0.02,cartTotal.get(0));
+        Assertions.assertEquals(1.01,cartTotal.get(1));
 
     }
 
@@ -28,9 +30,10 @@ public class ShoppingCartTest {
 
         ShoppingCart shoppingCart = new ShoppingCart(products);
 
-        double cartTotal = shoppingCart.calculateTotalCart();
+        List<Double> cartTotal = shoppingCart.calculateTotalCart();
 
-        Assertions.assertEquals(5.05, cartTotal);
+        Assertions.assertEquals(0.1,cartTotal.get(0));
+        Assertions.assertEquals(5.05,cartTotal.get(1));
 
     }
 
@@ -42,9 +45,10 @@ public class ShoppingCartTest {
 
         ShoppingCart shoppingCart = new ShoppingCart(products);
 
-        double cartTotal = shoppingCart.calculateTotalCart();
+        List<Double> cartTotal = shoppingCart.calculateTotalCart();
 
-        Assertions.assertEquals(2.03, cartTotal);
+        Assertions.assertEquals(0.04,cartTotal.get(0));
+        Assertions.assertEquals(2.03,cartTotal.get(1));
 
     }
 
@@ -58,11 +62,14 @@ public class ShoppingCartTest {
         products.add(productTwo);
 
         ShoppingCart shoppingCart = new ShoppingCart(products);
-        double cartTotal = shoppingCart.calculateTotalCart();
 
-        Assertions.assertEquals(3.04, cartTotal);
+        List<Double> cartTotal = shoppingCart.calculateTotalCart();
+
+        Assertions.assertEquals(0.06,cartTotal.get(0));
+        Assertions.assertEquals(3.04,cartTotal.get(1));
 
     }
+
     @Test
     void givenEmptyShoppingCart_whenAddThreeMaskAndThreeApple_thenShouldReturnTotalCartPriceEightPointNineFour() {
         Product productOne = new Product("apple", 3, 0.99);
@@ -73,11 +80,13 @@ public class ShoppingCartTest {
         products.add(productTwo);
 
         ShoppingCart shoppingCart = new ShoppingCart(products);
-        double cartTotal = shoppingCart.calculateTotalCart();
+        List<Double> cartTotal = shoppingCart.calculateTotalCart();
 
-        Assertions.assertEquals(9.12, cartTotal);
+        Assertions.assertEquals(0.18,cartTotal.get(0));
+        Assertions.assertEquals(9.12,cartTotal.get(1));
 
     }
+
     @Test
     void givenEmptyShoppingCart_whenAddThreeMaskAndThreeApple_thenShouldReturnTotalCartPriceWithTax() {
         Product productOne = new Product("apple", 3, 0.99);
@@ -88,9 +97,10 @@ public class ShoppingCartTest {
         products.add(productTwo);
 
         ShoppingCart shoppingCart = new ShoppingCart(products);
-        double cartTotal = shoppingCart.calculateTotalCart();
 
-        Assertions.assertEquals(9.12, cartTotal);
+        List<Double> cartTotal = shoppingCart.calculateTotalCart();
+        Assertions.assertEquals(0.18,cartTotal.get(0));
+        Assertions.assertEquals(9.12,cartTotal.get(1));
 
     }
 
