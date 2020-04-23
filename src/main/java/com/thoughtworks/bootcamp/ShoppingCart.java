@@ -5,14 +5,11 @@ import java.util.*;
 
 public class ShoppingCart {
 
-    private static final double salesTaxPercent = 0.02;
     private ShoppingCartCalculator cartCalculator;
-    Map<String, Integer> productQuantities = new HashMap<>();
+    private Map<String, Integer> productQuantities = new HashMap<>();
 
     ShoppingCart() {
-        double initialAmount = 0.0;
-        double itemsTotal = 0.0;
-        this.cartCalculator = new ShoppingCartCalculator(initialAmount, itemsTotal, salesTaxPercent);
+        this.cartCalculator = new ShoppingCartCalculator();
     }
 
 
@@ -47,9 +44,5 @@ public class ShoppingCart {
             return;
         }
         productQuantities.put(product.getName(), quantity);
-    }
-
-    private double format(double value) {
-        return Double.parseDouble(new DecimalFormat("##.##").format(value));
     }
 }
