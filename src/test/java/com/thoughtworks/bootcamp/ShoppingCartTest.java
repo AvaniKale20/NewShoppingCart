@@ -141,5 +141,19 @@ public class ShoppingCartTest {
 
     }
 
+    @Test
+    void givenEmptyShoppingCart_whenAddTwoAppleWithBuyTwoGetOneFreeOffer_thenShouldReturnTotalCartPriceOfTwoAppleWithTax() {
+        Product apple = new Product("apple", 0.99);//no
+        ArrayList<Product> products = new ArrayList<>();
+        products.add(apple);
+
+        ShoppingCart shoppingCart = new ShoppingCart();//no
+        shoppingCart.addCart(apple, 2);
+
+        Assertions.assertEquals(0.04, shoppingCart.getSalesTax());
+        Assertions.assertEquals(2.02, shoppingCart.getTotalCartWithTax());
+        Assertions.assertEquals(3, shoppingCart.getQuantity("apple"));
+
+    }
 
 }
