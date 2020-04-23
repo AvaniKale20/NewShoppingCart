@@ -142,7 +142,7 @@ public class ShoppingCartTest {
     }
 
     @Test
-    void givenEmptyShoppingCart_whenAddTwoAppleWithBuyTwoGetOneFreeOffer_thenShouldReturnTotalCartPriceOfTwoAppleWithTax() {
+    void givenEmptyShoppingCart_whenAddTwoAppleWithBuyTwoGetOneFreeOffer_thenShouldReturnTotalCartPriceOfTwoApplesWithTax() {
         Product apple = new Product("apple", 0.99);//no
         ArrayList<Product> products = new ArrayList<>();
         products.add(apple);
