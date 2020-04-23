@@ -17,8 +17,8 @@ public class ShoppingCartTest {
 
         List<Double> cartTotal = shoppingCart.calculateTotalCart();
 
-        Assertions.assertEquals(0.02,cartTotal.get(0));
-        Assertions.assertEquals(1.01,cartTotal.get(1));
+        Assertions.assertEquals(0.02, cartTotal.get(0));
+        Assertions.assertEquals(1.01, cartTotal.get(1));
 
     }
 
@@ -32,8 +32,8 @@ public class ShoppingCartTest {
 
         List<Double> cartTotal = shoppingCart.calculateTotalCart();
 
-        Assertions.assertEquals(0.1,cartTotal.get(0));
-        Assertions.assertEquals(5.05,cartTotal.get(1));
+        Assertions.assertEquals(0.1, cartTotal.get(0));
+        Assertions.assertEquals(5.05, cartTotal.get(1));
 
     }
 
@@ -47,8 +47,8 @@ public class ShoppingCartTest {
 
         List<Double> cartTotal = shoppingCart.calculateTotalCart();
 
-        Assertions.assertEquals(0.04,cartTotal.get(0));
-        Assertions.assertEquals(2.03,cartTotal.get(1));
+        Assertions.assertEquals(0.04, cartTotal.get(0));
+        Assertions.assertEquals(2.03, cartTotal.get(1));
 
     }
 
@@ -63,10 +63,10 @@ public class ShoppingCartTest {
 
         ShoppingCart shoppingCart = new ShoppingCart(products);
 
-        List<Double> cartTotal = shoppingCart.calculateTotalCart();
+        List<Double> totalCart = shoppingCart.calculateTotalCart();
 
-        Assertions.assertEquals(0.06,cartTotal.get(0));
-        Assertions.assertEquals(3.04,cartTotal.get(1));
+        Assertions.assertEquals(0.06, totalCart.get(0));
+        Assertions.assertEquals(3.04, totalCart.get(1));
 
     }
 
@@ -82,8 +82,8 @@ public class ShoppingCartTest {
         ShoppingCart shoppingCart = new ShoppingCart(products);
         List<Double> cartTotal = shoppingCart.calculateTotalCart();
 
-        Assertions.assertEquals(0.18,cartTotal.get(0));
-        Assertions.assertEquals(9.12,cartTotal.get(1));
+        Assertions.assertEquals(0.18, cartTotal.get(0));
+        Assertions.assertEquals(9.12, cartTotal.get(1));
 
     }
 
@@ -99,8 +99,8 @@ public class ShoppingCartTest {
         ShoppingCart shoppingCart = new ShoppingCart(products);
 
         List<Double> cartTotal = shoppingCart.calculateTotalCart();
-        Assertions.assertEquals(0.18,cartTotal.get(0));
-        Assertions.assertEquals(9.12,cartTotal.get(1));
+        Assertions.assertEquals(0.18, cartTotal.get(0));
+        Assertions.assertEquals(9.12, cartTotal.get(1));
 
     }
 
