@@ -24,14 +24,17 @@ public class ShoppingCartTest {
 
     @Test
     void givenEmptyShoppingCart_whenAddFiveApple_thenShouldReturnTotalCartPriceZeroPointNineNine() {
-        Product apple = new Product("apple", 0.99);
+        Product apple = new Product("apples", 0.99);
+        ArrayList<Product> products=new ArrayList<>();
+        products.add(apple);
 
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.addCart(apple, 5);
 
         Assertions.assertEquals(0.1, shoppingCart.getSalesTax());
         Assertions.assertEquals(5.05, shoppingCart.getTotalCartWithTax());
-        Assertions.assertEquals(5, shoppingCart.getQuantity("apple"));
+        Assertions.assertEquals(5, shoppingCart.getQuantity("apples"));
+        Assertions.assertEquals("cart contains 5 apples of 0.99 each",shoppingCart.getContent(products));
     }
 
     @Test
