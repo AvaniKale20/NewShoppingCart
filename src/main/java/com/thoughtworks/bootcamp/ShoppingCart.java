@@ -45,4 +45,11 @@ public class ShoppingCart {
         }
         productQuantities.put(product.getName(), quantity);
     }
+
+    public String getContent(ArrayList<Product> products) {
+        for (Product product : products) {
+            return "cart contains " + productQuantities.get(product.getName()) + " " + product.getName() + " of " + product.getPrice() + " each";
+        }
+        return null;
+    }
 }
