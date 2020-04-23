@@ -1,6 +1,5 @@
 package com.thoughtworks.bootcamp;
 
-import java.text.DecimalFormat;
 import java.util.*;
 
 public class ShoppingCart {
@@ -26,11 +25,13 @@ public class ShoppingCart {
     }
 
     public void addCart(Product product, int quantity) {
-        incrementQuantity(product, quantity);
-//        amount += getProductTotal(product, quantity);
-//        total = format(amount * (1 + salesTaxPercent));
+        if (quantity == 2) {
+            int totalQuantityWhenGetOffer = quantity + 1;
+            incrementQuantity(product, totalQuantityWhenGetOffer);
+        }
         double amount = getProductTotal(product, quantity);
         cartCalculator.updateAmount(amount);
+
     }
 
     private double getProductTotal(Product product, int quantity) {
@@ -52,4 +53,6 @@ public class ShoppingCart {
         }
         return null;
     }
+
+
 }
