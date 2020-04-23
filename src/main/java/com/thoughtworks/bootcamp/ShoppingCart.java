@@ -25,10 +25,16 @@ public class ShoppingCart {
     }
 
     public void addCart(Product product, int quantity) {
-        if (quantity == 2) {
-            int totalQuantityWhenGetOffer = quantity + 1;
-            incrementQuantity(product, totalQuantityWhenGetOffer);
-        }
+        // if (quantity == 2) {
+//        int totalQuantityWhenGetOffer = quantity + 1;
+//        incrementQuantity(product, totalQuantityWhenGetOffer);
+        //  }
+//        else {
+//            int totalQuantityWhenGetOffer = quantity - 1;
+//            int getFree = totalQuantityWhenGetOffer + 2;
+//            incrementQuantity(product, getFree);
+        // }
+        incrementQuantity(product, quantity);
         double amount = getProductTotal(product, quantity);
         cartCalculator.updateAmount(amount);
 
@@ -47,11 +53,21 @@ public class ShoppingCart {
         productQuantities.put(product.getName(), quantity);
     }
 
-    public String getContent(ArrayList<Product> products) {
-        for (Product product : products) {
-            return "cart contains " + productQuantities.get(product.getName()) + " " + product.getName() + " of " + product.getPrice() + " each";
+    public String getContent(List<Product> products) {
+        String message = "The cart contains ";
+        for (int index = 0; index < products.size(); index++) {
+            Product product = products.get(index);
+            if (products.size() == 1) {
+                return (" the cart contains " + productQuantities.get(product.getName()) + " " + product.getName() + " of " + product.getPrice() + " each ");
+            } else {
+                if (index == products.size() - 1) {
+                    message = message.concat(" and ");
+                }
+
+                message = message.concat(productQuantities.get(product.getName()) + " " + product.getName() + " of " + product.getPrice() + " each");
+            }
         }
-        return null;
+        return message;
     }
 
 
