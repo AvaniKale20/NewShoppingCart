@@ -39,10 +39,12 @@ public class ShoppingCartTest {
 
     @Test
     void givenEmptyShoppingCart_whenAddOneMask_thenShouldReturnTotalCartPriceOnrPointNineNine() {
-        Product apple = new Product("mask", 1.99);
+        Product mask = new Product("mask", 1.99);
+        ArrayList<Product> products=new ArrayList<>();
+        products.add(mask);
 
         ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.addCart(apple, 1);
+        shoppingCart.addCart(mask, 1);
 
 
         Assertions.assertEquals(0.04, shoppingCart.getSalesTax());
