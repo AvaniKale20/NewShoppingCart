@@ -9,7 +9,6 @@ public class ShoppingCart {
     private ArrayList<Product> products;
     private double cartTotal;
     static final double salesTax = 0.02;
-    List<Double> output=new ArrayList<>();
 
     public ShoppingCart(ArrayList<Product> products) {
         this.products = products;
