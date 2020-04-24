@@ -137,33 +137,17 @@ public class ShoppingCartTest {
 
     }
 
-//    @Test
-//    void givenEmptyShoppingCart_whenAddTwoAppleWithBuyTwoGetOneFreeOffer_thenShouldReturnTotalCartPriceOfTwoApplesWithTax() {
-//        Product apple = new Product("apple", 0.99);//no
-//        ArrayList<Product> products = new ArrayList<>();
-//        products.add(apple);
-//
-//        ShoppingCart shoppingCart = new ShoppingCart();//no
-//        shoppingCart.addCart(apple, 2);
-//
-//        Assertions.assertEquals(0.04, shoppingCart.getSalesTax());
-//        Assertions.assertEquals(2.02, shoppingCart.getTotalCartWithTax());
-//        Assertions.assertEquals(3, shoppingCart.getQuantity("apple"));
-//
-//    }
-//    @Test
-//    void givenEmptyShoppingCart_whenAddFiveAppleWithBuyTwoGetOneFreeOffer_thenShouldReturnTotalCartPriceOfFourApplesWithTax() {
-//        Product apple = new Product("apple", 0.99);//no
-//        ArrayList<Product> products = new ArrayList<>();
-//        products.add(apple);
-//
-//        ShoppingCart shoppingCart = new ShoppingCart();//no
-//        shoppingCart.addCart(apple, 5);
-//
-////        Assertions.assertEquals(0.04, shoppingCart.getSalesTax());
-////        Assertions.assertEquals(2.02, shoppingCart.getTotalCartWithTax());
-//        Assertions.assertEquals(6, shoppingCart.getQuantity("apple"));
-//
-//    }
+    @Test
+    void givenEmptyShoppingCart_whenAddTwoAppleWithBuyTwoGetOneFreeOffer_thenShouldReturnTotalThreeApple() {
+        Product apple = new Product("apple", 0.99);
+
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.addCart(apple, 2, "For3Buy2");
+
+        Assertions.assertEquals(0.04, shoppingCart.getSalesTax());
+        Assertions.assertEquals(2.02, shoppingCart.getTotalCartWithTax());
+        Assertions.assertEquals(3, shoppingCart.getQuantity("apple"));
+
+    }
 
 }
