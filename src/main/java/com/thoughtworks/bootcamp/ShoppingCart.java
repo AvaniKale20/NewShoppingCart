@@ -6,6 +6,7 @@ public class ShoppingCart {
 
     private ShoppingCartCalculator cartCalculator;
     private Map<String, Integer> productQuantities = new HashMap<>();
+    private Offer offer;
 
     ShoppingCart() {
         this.cartCalculator = new ShoppingCartCalculator();
@@ -24,21 +25,34 @@ public class ShoppingCart {
         return cartCalculator.getSalesTax();
     }
 
-    public void addCart(Product product, int quantity) {
-        // if (quantity == 2) {
-//        int totalQuantityWhenGetOffer = quantity + 1;
-//        incrementQuantity(product, totalQuantityWhenGetOffer);
-        //  }
-//        else {
-//            int totalQuantityWhenGetOffer = quantity - 1;
-//            int getFree = totalQuantityWhenGetOffer + 2;
-//            incrementQuantity(product, getFree);
-        // }
-        incrementQuantity(product, quantity);
+    public void addCart(Product product, int quantity, String offer) {
+        if (offer.matches("For3Buy2")) {
+            int updatedAppleQuantity = ((quantity / 2) * 3);
+            incrementQuantity(product, updatedAppleQuantity);
+
+        } else {
+            incrementQuantity(product, quantity);
+        }
         double amount = getProductTotal(product, quantity);
         cartCalculator.updateAmount(amount);
 
     }
+
+    //    public void getOffer(Product product, int q, String offer) {
+//        List<Integer> list = Arrays.asList(2, 5, 8, 11);
+//        int getFRee = 1;
+//        int updated = 0;
+//        if (offer.matches("For3Buy2"))
+//            if (list.contains(q)) {
+//                updated = q + getFRee;
+    // incrementQuantity(product, updated);
+
+//            }
+//       else {
+//            incrementQuantity(product, quantity);
+//        }
+//
+//    }
 
     private double getProductTotal(Product product, int quantity) {
         return product.getPrice() * quantity;
