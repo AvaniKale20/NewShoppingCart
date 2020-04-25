@@ -3,153 +3,132 @@ package com.thoughtworks.bootcamp;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-
 public class ShoppingCartTest {
-//    @Test
-//    void givenEmptyShoppingCart_whenAddOneApple_thenShouldReturnTotalCartPriceZeroPointNineNine() {
-//        Product apple = new Product("Apple", 0.99);
-//        ArrayList<Product> products = new ArrayList<>();
-//        products.add(apple);
-//
-//        ShoppingCart shoppingCart = new ShoppingCart();
-//        shoppingCart.addCart(apple, 1);
-//
-//        Assertions.assertEquals(0.02, shoppingCart.getSalesTax());
-//        Assertions.assertEquals(1.01, shoppingCart.getTotalCartWithTax());
-//        Assertions.assertEquals(1, shoppingCart.getQuantity("Apple"));
-//        Assertions.assertEquals(" the cart contains 1 Apple of 0.99 each ", shoppingCart.getContent(products));
-//
-//    }
-//
-//    @Test
-//    void givenEmptyShoppingCart_whenAddFiveApple_thenShouldReturnTotalCartPriceZeroPointNineNine() {
-//        Product apple = new Product("Apple", 0.99);
-//        ArrayList<Product> products = new ArrayList<>();
-//        products.add(apple);
-//
-//        ShoppingCart shoppingCart = new ShoppingCart();
-//        shoppingCart.addCart(apple, 5);
-//
-//        Assertions.assertEquals(0.1, shoppingCart.getSalesTax());
-//        Assertions.assertEquals(5.05, shoppingCart.getTotalCartWithTax());
-//        Assertions.assertEquals(5, shoppingCart.getQuantity("Apple"));
-//        Assertions.assertEquals(" the cart contains 5 Apple of 0.99 each ", shoppingCart.getContent(products));
-//    }
-//
-//    @Test
-//    void givenEmptyShoppingCart_whenAddOneMask_thenShouldReturnTotalCartPriceOnrPointNineNine() {
-//        Product mask = new Product("Mask", 1.99);
-//        ArrayList<Product> products = new ArrayList<>();
-//        products.add(mask);
-//
-//        ShoppingCart shoppingCart = new ShoppingCart();
-//        shoppingCart.addCart(mask, 1);
-//
-//
-//        Assertions.assertEquals(0.04, shoppingCart.getSalesTax());
-//        Assertions.assertEquals(2.03, shoppingCart.getTotalCartWithTax());
-//        Assertions.assertEquals(1, shoppingCart.getQuantity("Mask"));
-//        Assertions.assertEquals(" the cart contains 1 Mask of 1.99 each ", shoppingCart.getContent(products));
-//
-//    }
-//
-//    //
-//    @Test
-//    void givenEmptyShoppingCart_whenAddOneMaskAndOneApple_thenShouldReturnTotalCartPriceTwoPointNineEight() {
-//        Product apple = new Product("Apple", 0.99);
-//        Product mask = new Product("Mask", 1.99);
-//        ArrayList<Product> products = new ArrayList<>();
-//        products.add(apple);
-//        products.add(mask);
-//
-//        ShoppingCart shoppingCart = new ShoppingCart();
-//        shoppingCart.addCart(apple, 1);
-//        shoppingCart.addCart(mask, 1);
-//
-//        Assertions.assertEquals(0.06, shoppingCart.getSalesTax());
-//        Assertions.assertEquals(3.04, shoppingCart.getTotalCartWithTax());
-//        Assertions.assertEquals(1, shoppingCart.getQuantity("Mask"));
-//        Assertions.assertEquals(1, shoppingCart.getQuantity("Apple"));
-//        Assertions.assertEquals("The cart contains 1 Apple of 0.99 each and 1 Mask of 1.99 each", shoppingCart.getContent(products));
-//
-//    }
-//
-//    @Test
-//    void givenEmptyShoppingCart_whenAddThreeMaskAndThreeApple_thenShouldReturnTotalCartPriceEightPointNineFour() {
-//        Product apple = new Product("Apple", 0.99);
-//        Product mask = new Product("Mask", 1.99);
-//        ArrayList<Product> products = new ArrayList<>();
-//        products.add(apple);
-//        products.add(mask);
-//
-//        ShoppingCart shoppingCart = new ShoppingCart();
-//        shoppingCart.addCart(apple, 3);
-//        shoppingCart.addCart(mask, 3);
-//
-//        Assertions.assertEquals(0.18, shoppingCart.getSalesTax());
-//        Assertions.assertEquals(9.12, shoppingCart.getTotalCartWithTax());
-//        Assertions.assertEquals(3, shoppingCart.getQuantity("Mask"));
-//        Assertions.assertEquals(3, shoppingCart.getQuantity("Apple"));
-//        Assertions.assertEquals("The cart contains 3 Apple of 0.99 each and 3 Mask of 1.99 each", shoppingCart.getContent(products));
-//
-//    }
-//
-@Test
-void givenEmptyShoppingCart_whenAddThreeMaskAndThreeApple_thenShouldReturnTotalCartPriceWithTax() {
-    Product apple = new Product("Apple", 0.99);
-    Product mask = new Product("Mask", 1.99);
-    ArrayList<Product> products = new ArrayList<>();
-    products.add(apple);
-    products.add(mask);
+    @Test
+    void givenEmptyShoppingCart_whenAddOneApple_thenShouldReturnTotalCartPriceZeroPointNineNine() {
+        Product apple = new Product("Apple", 0.99);
 
-    ShoppingCart shoppingCart = new ShoppingCart();
-    shoppingCart.addCart(apple, 2,"For3Buy2");
-    shoppingCart.addCart(apple, 1,"For3Buy2");
-    shoppingCart.addCart(mask, 3,"For3Buy2");
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.addCart(apple, 1);
 
-    Assertions.assertEquals(0.18, shoppingCart.getSalesTax());
-    Assertions.assertEquals(9.12, shoppingCart.getTotalCartWithTax());
-    Assertions.assertEquals(3, shoppingCart.getQuantity("Mask"));
-    Assertions.assertEquals(3, shoppingCart.getQuantity("Apple"));
-    Assertions.assertEquals("The cart contains 3 Apple of 0.99 each and 3 Mask of 1.99 each", shoppingCart.getContent(products));
+        Assertions.assertEquals(0.02, shoppingCart.getSalesTax());
+        Assertions.assertEquals(1.01, shoppingCart.getTotalCartWithTax());
+        Assertions.assertEquals("ShoppingCart{cartItems=[CartItem{product=Product{name='Apple', price=0.99}, quantity=1}]}", shoppingCart.toString());
 
-}
+    }
 
-    //
+    @Test
+    void givenEmptyShoppingCart_whenAddFiveApple_thenShouldReturnTotalCartPriceZeroPointNineNine() {
+        Product apple = new Product("Apple", 0.99);
+
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.addCart(apple, 5);
+
+        Assertions.assertEquals(0.1, shoppingCart.getSalesTax());
+        Assertions.assertEquals(5.05, shoppingCart.getTotalCartWithTax());
+        Assertions.assertEquals("ShoppingCart{cartItems=[CartItem{product=Product{name='Apple', price=0.99}, quantity=5}]}", shoppingCart.toString());
+    }
+
+
+    @Test
+    void givenEmptyShoppingCart_whenAddOneMask_thenShouldReturnTotalCartPriceOnrPointNineNine() {
+        Product mask = new Product("Mask", 1.99);
+
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.addCart(mask, 1);
+
+
+        Assertions.assertEquals(0.04, shoppingCart.getSalesTax());
+        Assertions.assertEquals(2.03, shoppingCart.getTotalCartWithTax());
+        Assertions.assertEquals("ShoppingCart{cartItems=[CartItem{product=Product{name='Mask', price=1.99}, quantity=1}]}", shoppingCart.toString());
+
+    }
+
+    @Test
+    void givenEmptyShoppingCart_whenAddOneMaskAndOneApple_thenShouldReturnTotalCartPriceTwoPointNineEight() {
+        Product apple = new Product("Apple", 0.99);
+        Product mask = new Product("Mask", 1.99);
+
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.addCart(apple, 1);
+        shoppingCart.addCart(mask, 1);
+
+        Assertions.assertEquals(0.06, shoppingCart.getSalesTax());
+        Assertions.assertEquals(3.04, shoppingCart.getTotalCartWithTax());
+
+        Assertions.assertEquals("ShoppingCart{cartItems=[CartItem{product=Product{name='Apple', price=0.99}, quantity=1}," +
+                " CartItem{product=Product{name='Mask', price=1.99}, quantity=1}]}", shoppingCart.toString());
+
+    }
+
+    @Test
+    void givenEmptyShoppingCart_whenAddThreeMaskAndThreeApple_thenShouldReturnTotalCartPriceEightPointNineFour() {
+        Product apple = new Product("Apple", 0.99);
+        Product mask = new Product("Mask", 1.99);
+
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.addCart(apple, 3);
+        shoppingCart.addCart(mask, 3);
+
+        Assertions.assertEquals(0.18, shoppingCart.getSalesTax());
+        Assertions.assertEquals(9.12, shoppingCart.getTotalCartWithTax());
+
+        Assertions.assertEquals("ShoppingCart{cartItems=[CartItem{product=Product{name='Apple', price=0.99}, quantity=3}, " +
+                "CartItem{product=Product{name='Mask', price=1.99}, quantity=3}]}", shoppingCart.toString());
+
+    }
+
+    @Test
+    void givenEmptyShoppingCart_whenAddThreeMaskAndThreeApple_thenShouldReturnTotalCartPriceWithTax() {
+        Product apple = new Product("Apple", 0.99);
+        Product mask = new Product("Mask", 1.99);
+
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.addCart(apple, 2);
+        shoppingCart.addCart(apple, 1);
+        shoppingCart.addCart(mask, 3);
+
+        Assertions.assertEquals(0.18, shoppingCart.getSalesTax());
+        Assertions.assertEquals(9.12, shoppingCart.getTotalCartWithTax());
+
+        Assertions.assertEquals("ShoppingCart{cartItems=[CartItem{product=Product{name='Apple', price=0.99}, quantity=3}," +
+                " CartItem{product=Product{name='Mask', price=1.99}, quantity=3}]}", shoppingCart.toString());
+
+    }
+
+
     @Test
     void givenEmptyShoppingCart_whenAddSixAppleThreeMask_thenShouldReturnTotalCartPriceWithTax() {
         Product apple = new Product("Apple", 0.99);
         Product mask = new Product("Mask", 1.99);
-        ArrayList<Product> products = new ArrayList<>();
-        products.add(apple);
-        products.add(mask);
 
         ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.addCart(apple, 5,"For3Buy2");
-        shoppingCart.addCart(apple, 1,"For3Buy2");
-        shoppingCart.addCart(mask, 3,"noOffer");
+        shoppingCart.addCart(apple, 5);
+        shoppingCart.addCart(apple, 1);
+        shoppingCart.addCart(mask, 3);
 
         Assertions.assertEquals(0.24, shoppingCart.getSalesTax());
         Assertions.assertEquals(12.15, shoppingCart.getTotalCartWithTax());
-        Assertions.assertEquals(3, shoppingCart.getQuantity("Mask"));
-        Assertions.assertEquals(9, shoppingCart.getQuantity("Apple"));
-        Assertions.assertEquals("The cart contains 9 Apple of 0.99 each and 3 Mask of 1.99 each", shoppingCart.getContent(products));
+
+        Assertions.assertEquals("ShoppingCart{cartItems=[CartItem{product=Product{name='Apple', price=0.99}, quantity=6}," +
+                " CartItem{product=Product{name='Mask', price=1.99}, quantity=3}]}", shoppingCart.toString());
 
     }
 
-    @Test
-    void givenEmptyShoppingCart_whenAddTwoAppleWithBuyTwoGetOneFreeOffer_thenShouldReturnTotalThreeApple() {
-        Product apple = new Product("apple", 0.99);
-
-        ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.addCart(apple, 2, "For3Buy2");
-
-        Assertions.assertEquals(0.04, shoppingCart.getSalesTax());
-        Assertions.assertEquals(2.02, shoppingCart.getTotalCartWithTax());
-        Assertions.assertEquals(3, shoppingCart.getQuantity("apple"));
-
-    }
+//    @Test
+//    void givenEmptyShoppingCart_whenAddTwoAppleWithBuyTwoGetOneFreeOffer_thenShouldReturnTotalThreeApple() {
+//        Product apple = new Product("apple", 0.99);
+//
+//
+//        ShoppingCart shoppingCart = new ShoppingCart();
+//        Offer buy2Get1=new Offer(2,1);
+//        shoppingCart.addCart(apple, 1, buy2Get1);
+//
+////        Assertions.assertEquals(0.04, shoppingCart.getSalesTax());
+////        Assertions.assertEquals(2.02, shoppingCart.getTotalCartWithTax());
+//        Assertions.assertEquals(1, shoppingCart.getQuantity("apple"));
+//
+//    }
 
 
 }

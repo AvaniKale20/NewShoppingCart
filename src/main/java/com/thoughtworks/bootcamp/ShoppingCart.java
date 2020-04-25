@@ -1,88 +1,60 @@
 package com.thoughtworks.bootcamp;
 
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class ShoppingCart {
-
-    private ShoppingCartCalculator cartCalculator;
-    private Map<String, Integer> productQuantities = new HashMap<>();
-    private Offer offer;
+    private static final double SALES_TAX_PERCENT = 0.02;
+    private double total = 0.0;
+    private double itemsTotal = 0.0;
+    private List<CartItem> cartItems;
+    private double tax;
 
     ShoppingCart() {
-        this.cartCalculator = new ShoppingCartCalculator();
-    }
-
-
-    public int getQuantity(String name) {
-        return productQuantities.get(name);
+        this.cartItems = new ArrayList<>();
     }
 
     public double getTotalCartWithTax() {
-        return cartCalculator.getTotal();
+        return this.total;
     }
 
     public double getSalesTax() {
-        return cartCalculator.getSalesTax();
+        return this.tax;
     }
 
-    public void addCart(Product product, int quantity, String offer) {
-        if (offer.matches("For3Buy2")) {
-            int updatedAppleQuantity = ((quantity / 2) * 3);
-            incrementQuantity(product, updatedAppleQuantity);
-
-        } else {
-            incrementQuantity(product, quantity);
-        }
-        double amount = getProductTotal(product, quantity);
-        cartCalculator.updateAmount(amount);
-
-    }
-
-    //    public void getOffer(Product product, int q, String offer) {
-//        List<Integer> list = Arrays.asList(2, 5, 8, 11);
-//        int getFRee = 1;
-//        int updated = 0;
-//        if (offer.matches("For3Buy2"))
-//            if (list.contains(q)) {
-//                updated = q + getFRee;
-    // incrementQuantity(product, updated);
-
-//            }
-//       else {
-//            incrementQuantity(product, quantity);
-//        }
-//
-//    }
-
-    private double getProductTotal(Product product, int quantity) {
-        return product.getPrice() * quantity;
-    }
-
-    private void incrementQuantity(Product product, int quantity) {
-        if (productQuantities.containsKey(product.getName())) {
-            Integer existingQuantity = productQuantities.get(product.getName());
-            productQuantities.put(product.getName(), existingQuantity + quantity);
+    public void addCart(Product product, int quantity) {
+        CartItem cartItem = cartItemFor(product, quantity);
+        if (!cartItems.contains(cartItem)) {
+            cartItems.add(cartItem);
             return;
         }
-        productQuantities.put(product.getName(), quantity);
+        cartItem.incrementQuantity(quantity);
     }
 
-    public String getContent(List<Product> products) {
-        String message = "The cart contains ";
-        for (int index = 0; index < products.size(); index++) {
-            Product product = products.get(index);
-            if (products.size() == 1) {
-                return (" the cart contains " + productQuantities.get(product.getName()) + " " + product.getName() + " of " + product.getPrice() + " each ");
-            } else {
-                if (index == products.size() - 1) {
-                    message = message.concat(" and ");
-                }
+    private CartItem cartItemFor(Product product, int quantity) {
+        CartItem cartItem = new CartItem(product, quantity);
+        itemsTotal += cartItem.getPrice();
+        tax = format(itemsTotal * SALES_TAX_PERCENT);
+        total = format(itemsTotal + tax);
 
-                message = message.concat(productQuantities.get(product.getName()) + " " + product.getName() + " of " + product.getPrice() + " each");
+        for (CartItem item : cartItems) {
+            if (item.isExists(product.getName())) {
+                cartItem = item;
+                break;
             }
         }
-        return message;
+        return cartItem;
     }
 
 
+    private double format(double value) {
+        return Double.parseDouble(new DecimalFormat("##.##").format(value));
+    }
+
+    @Override
+    public String toString() {
+        return "ShoppingCart{" +
+                "cartItems=" + cartItems +
+                '}';
+    }
 }
