@@ -3,10 +3,12 @@ package com.thoughtworks.bootcamp;
 public class Product {
     private String name;
     private double price;
+    private Offers offers;
 
-    public Product(String name, double price) {
+    public Product(String name, double price, Offers offers) {
         this.name = name;
         this.price = price;
+        this.offers = offers;
     }
 
     public String getName() {
@@ -17,11 +19,4 @@ public class Product {
         return this.price;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                '}';
-    }
 }
