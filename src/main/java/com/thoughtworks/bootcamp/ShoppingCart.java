@@ -22,13 +22,30 @@ public class ShoppingCart {
         return this.tax;
     }
 
-    public void addCart(Product product, int quantity) {
+
+    public void addCart(Product product, int quantity) {//app 3 //app 1
+
         CartItem cartItem = cartItemFor(product, quantity);
         if (!cartItems.contains(cartItem)) {
             cartItems.add(cartItem);
             return;
         }
-        cartItem.incrementQuantity(quantity);
+        cartItem.incrementQuantity(quantity);//3 //3+1=4
+
+    }
+
+    public int getFreeProduct(Product product)//app 4
+    {
+        CartItem cartItem;
+        for (int i = 0; i < cartItems.size(); i++) {
+            cartItem = cartItems.get(i);
+            if (cartItem.getProduct().getName().equals(product.getName())) {
+                if (cartItem.getQuantityOfProduct() > 2) {
+                    return cartItem.getOnlyOneFree();
+                }
+            }
+        }
+        return 0;
     }
 
     private CartItem cartItemFor(Product product, int quantity) {

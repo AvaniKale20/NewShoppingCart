@@ -9,4 +9,21 @@ public class Offers {
         this.getFree = getFree;
     }
 
+//    public void buyMoreThanTwo() {
+//        int buyMoreThanTwo = this.buyMoreThanTwo;
+    //}
+
+
+    public int getOneFree() {
+        return 1;
+    }
+
+    @Override
+    public String toString() {
+        return "Offers{" +
+                "buyMoreThanTwo=" + buyMoreThanTwo +
+                ", getFree=" + getFree +
+                '}';
+    }
+
 }

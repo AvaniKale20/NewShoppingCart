@@ -19,4 +19,25 @@ public class Product {
         return this.price;
     }
 
-}
+//    public void buyMoreThan2() {
+//        offers.buyMoreThanTwo();
+//    }
+
+    public int getOneFree() {
+        return offers.getOneFree();
+
+    }
+
+    public int noOffer() {
+        return 0;
+    }
+
+
+    @Override
+        public String toString () {
+            return "Product{" +
+                    "name='" + name + '\'' +
+                    ", price=" + price +
+                    '}';
+        }
+    }

@@ -2,7 +2,7 @@ package com.thoughtworks.bootcamp;
 
 
 public class CartItem {
-    private Product product;
+    private Product product;//name price
     private int quantity;
 
     public CartItem(Product product, int quantity) {
@@ -22,4 +22,23 @@ public class CartItem {
         return product.getPrice() * quantity;
     }
 
+    public int getOnlyOneFree() {
+        return product.getOneFree();
+    }
+
+    public int getQuantityOfProduct() {
+        return quantity;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    @Override
+    public String toString() {
+        return "CartItem{" +
+                "product=" + product +
+                ", quantity=" + quantity +
+                '}';
+    }
 }
