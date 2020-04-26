@@ -37,7 +37,7 @@ public class ShoppingCart {
     public int getFreeProduct(Product product)//app 4
     {
         for (CartItem cartItem : cartItems) {
-            if (cartItem.getProduct().getName().equals(product.getName())) {
+            if (cartItem.isExists(product.getName())) {
                 if (cartItem.getQuantityOfProduct() > 2) {
                     return cartItem.getOnlyOneFree();
                 }

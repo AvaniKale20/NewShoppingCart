@@ -30,10 +30,6 @@ public class CartItem {
         return quantity;
     }
 
-    public Product getProduct() {
-        return product;
-    }
-
     @Override
     public String toString() {
         return "CartItem{" +
