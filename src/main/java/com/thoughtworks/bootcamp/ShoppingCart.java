@@ -46,6 +46,10 @@ public class ShoppingCart {
         return 0;
     }
 
+    public double getDiscount(Product product) {
+        int freeProduct = getFreeProduct(product);
+        return freeProduct * product.getPrice();
+    }
 
     private CartItem cartItemFor(Product product, int quantity) {
         CartItem cartItem = new CartItem(product, quantity);
@@ -73,4 +77,5 @@ public class ShoppingCart {
                 "cartItems=" + cartItems +
                 '}';
     }
+
 }
