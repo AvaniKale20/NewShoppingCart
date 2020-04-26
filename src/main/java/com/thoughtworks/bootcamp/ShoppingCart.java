@@ -36,9 +36,7 @@ public class ShoppingCart {
 
     public int getFreeProduct(Product product)//app 4
     {
-        CartItem cartItem;
-        for (int i = 0; i < cartItems.size(); i++) {
-            cartItem = cartItems.get(i);
+        for (CartItem cartItem : cartItems) {
             if (cartItem.getProduct().getName().equals(product.getName())) {
                 if (cartItem.getQuantityOfProduct() > 2) {
                     return cartItem.getOnlyOneFree();
@@ -47,6 +45,7 @@ public class ShoppingCart {
         }
         return 0;
     }
+
 
     private CartItem cartItemFor(Product product, int quantity) {
         CartItem cartItem = new CartItem(product, quantity);
