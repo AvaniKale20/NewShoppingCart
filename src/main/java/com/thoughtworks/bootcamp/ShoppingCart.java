@@ -47,8 +47,13 @@ public class ShoppingCart {
     }
 
     public double getDiscount(Product product) {
+        if (getTotalCartWithTax() > 10) {
+//            return (getTotalCartWithTax() * 0.10);
+            return this.total * 0.10;
+        }
         int freeProduct = getFreeProduct(product);
         return freeProduct * product.getPrice();
+
     }
 
     private CartItem cartItemFor(Product product, int quantity) {
