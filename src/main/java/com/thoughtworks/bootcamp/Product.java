@@ -19,13 +19,8 @@ public class Product {
         return this.price;
     }
 
-//    public void buyMoreThan2() {
-//        offers.buyMoreThanTwo();
-//    }
-
     public int getOneFree() {
         return offers.getOneFree();
-
     }
 
     public int noOffer() {
@@ -34,10 +29,10 @@ public class Product {
 
 
     @Override
-        public String toString () {
-            return "Product{" +
-                    "name='" + name + '\'' +
-                    ", price=" + price +
-                    '}';
-        }
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                '}';
     }
+}
