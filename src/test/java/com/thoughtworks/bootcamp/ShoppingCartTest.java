@@ -125,12 +125,10 @@ public class ShoppingCartTest {
 
         shoppingCart.addCart(apple, 3);
 
-
         Assertions.assertEquals(0.06, shoppingCart.getSalesTax());
         Assertions.assertEquals(3.03, shoppingCart.getTotalCartWithTax());
         Assertions.assertEquals("ShoppingCart{cartItems=[CartItem{product=Product{name='Apple', price=0.99}, quantity=3}]}", shoppingCart.toString());
-
-
+        Assertions.assertEquals(1, shoppingCart.getFreeProduct(apple));
     }
 
 
