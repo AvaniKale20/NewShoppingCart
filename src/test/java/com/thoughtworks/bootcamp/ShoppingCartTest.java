@@ -181,4 +181,23 @@ public class ShoppingCartTest {
         Assertions.assertEquals("ShoppingCart{cartItems=[CartItem{product=Product{name='Apple', price=0.99}, quantity=5}]}", shoppingCart.toString());
         Assertions.assertEquals(1, shoppingCart.getFreeProduct(apple));
     }
+
+    @Test
+    void givenEmptyShoppingCart_whenAddFiveAppleWithBuyMoreThanTwoGetOneFreeOffer_And_OneMaskWithNoOffer_thenShouldReturnTotalThreeAppleAndOneMaskAndOneAppleFree() {
+        Offers buy2Get1 = new Offers(3, 1);
+        Offers noOffer = new Offers(0, 0);
+
+        Product apple = new Product("Apple", 0.99, buy2Get1);
+        Product mask = new Product("Mask", 1.99, noOffer);
+
+        ShoppingCart shoppingCart = new ShoppingCart();
+
+        shoppingCart.addCart(apple, 5);
+        shoppingCart.addCart(mask, 1);
+
+        Assertions.assertEquals(0.14, shoppingCart.getSalesTax());
+        Assertions.assertEquals(7.08, shoppingCart.getTotalCartWithTax());
+        Assertions.assertEquals("ShoppingCart{cartItems=[CartItem{product=Product{name='Apple', price=0.99}, quantity=5}, CartItem{product=Product{name='Mask', price=1.99}, quantity=1}]}", shoppingCart.toString());
+        Assertions.assertEquals(1, shoppingCart.getFreeProduct(apple));
+    }
 }
