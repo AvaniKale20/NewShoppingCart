@@ -146,6 +146,7 @@ public class ShoppingCartTest {
         Assertions.assertEquals("ShoppingCart{cartItems=[CartItem{product=Product{name='Apple', price=0.99}, quantity=1}]}", shoppingCart.toString());
         Assertions.assertEquals(0, shoppingCart.getFreeProduct(apple));
     }
+
     @Test
     void givenEmptyShoppingCart_whenAddTwoAppleWithBuyMoreThanTwoGetOneFreeOffer_thenShouldReturnTotalTwoAppleAndZeroFreeApple() {
         Offers buy2Get1 = new Offers(3, 1);
@@ -163,4 +164,21 @@ public class ShoppingCartTest {
         Assertions.assertEquals(0, shoppingCart.getFreeProduct(apple));
     }
 
+    @Test
+    void givenEmptyShoppingCart_whenAddFiveAppleWithBuyMoreThanTwoGetOneFreeOffer_thenShouldReturnTotalFiveAppleAndOneApple() {
+        Offers buy2Get1 = new Offers(3, 1);
+
+        Product apple = new Product("Apple", 0.99, buy2Get1);
+
+        ShoppingCart shoppingCart = new ShoppingCart();
+
+        shoppingCart.addCart(apple, 2);
+        shoppingCart.addCart(apple, 2);
+        shoppingCart.addCart(apple, 1);
+
+        Assertions.assertEquals(0.1, shoppingCart.getSalesTax());
+        Assertions.assertEquals(5.05, shoppingCart.getTotalCartWithTax());
+        Assertions.assertEquals("ShoppingCart{cartItems=[CartItem{product=Product{name='Apple', price=0.99}, quantity=5}]}", shoppingCart.toString());
+        Assertions.assertEquals(1, shoppingCart.getFreeProduct(apple));
+    }
 }
