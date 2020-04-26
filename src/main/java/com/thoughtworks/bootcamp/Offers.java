@@ -15,7 +15,7 @@ public class Offers {
 
 
     public int getOneFree() {
-        return 1;
+        return this.getFree;
     }
 
     @Override
