@@ -135,8 +135,8 @@ public class ShoppingCartTest {
 
         Assertions.assertEquals("ShoppingCart{cartItems=[CartItem{product=Product{name='Apple', price=0.99}, quantity=6}," +
                 " CartItem{product=Product{name='Mask', price=1.99}, quantity=3}]}", shoppingCart.toString());
-        Assertions.assertEquals(1, shoppingCart.getFreeProduct(apple));
-        Assertions.assertEquals(0.99, shoppingCart.getDiscount(apple));
+        Assertions.assertEquals(2, shoppingCart.getFreeProduct(apple));
+        Assertions.assertEquals(1.98, shoppingCart.getDiscount(apple));
 
     }
 
@@ -263,8 +263,8 @@ public class ShoppingCartTest {
         Assertions.assertEquals(0.2, shoppingCart.getSalesTax());//0.32
         Assertions.assertEquals(10.1, shoppingCart.getTotalCartWithTax());//16.19
         Assertions.assertEquals("ShoppingCart{cartItems=[CartItem{product=Product{name='Apple', price=0.99}, quantity=10}]}", shoppingCart.toString());
-        Assertions.assertEquals(1, shoppingCart.getFreeProduct(apple));
-        Assertions.assertEquals(1.01, shoppingCart.getDiscount(apple));
+        Assertions.assertEquals(3, shoppingCart.getFreeProduct(apple));
+        Assertions.assertEquals(2.97, shoppingCart.getDiscount(apple));
 
     }
 
@@ -284,8 +284,8 @@ public class ShoppingCartTest {
         Assertions.assertEquals(0.32, shoppingCart.getSalesTax());//0.32
         Assertions.assertEquals(16.19, shoppingCart.getTotalCartWithTax());//16.19
         Assertions.assertEquals("ShoppingCart{cartItems=[CartItem{product=Product{name='Apple', price=0.99}, quantity=10}, CartItem{product=Product{name='Mask', price=1.99}, quantity=3}]}", shoppingCart.toString());
-        Assertions.assertEquals(1, shoppingCart.getFreeProduct(apple));
-        Assertions.assertEquals(1.62, shoppingCart.getDiscount(apple));
+        Assertions.assertEquals(3, shoppingCart.getFreeProduct(apple));
+        Assertions.assertEquals(2.97, shoppingCart.getDiscount(apple));
 
     }
 }

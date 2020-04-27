@@ -22,7 +22,6 @@ public class ShoppingCart {
         return this.tax;
     }
 
-
     public void addCart(Product product, int quantity) {//app 3 //app 1
 
         CartItem cartItem = cartItemFor(product, quantity);
@@ -31,15 +30,14 @@ public class ShoppingCart {
             return;
         }
         cartItem.incrementQuantity(quantity);//3 //3+1=4
-
     }
 
     public int getFreeProduct(Product product)//app 4
     {
         for (CartItem cartItem : cartItems) {
             if (cartItem.isExists(product.getName())) {
-                if (cartItem.getQuantityOfProduct() > 2) {
-                    return cartItem.getOnlyOneFree();
+                if (cartItem.getQuantityOfProduct() > 2) {//3>2
+                    return cartItem.getFreeProduct();
                 }
             }
         }
@@ -47,13 +45,8 @@ public class ShoppingCart {
     }
 
     public double getDiscount(Product product) {
-        if (getTotalCartWithTax() > 10) {
-//            return (getTotalCartWithTax() * 0.10);
-            return format(this.total * 0.10);
-        }
         int freeProduct = getFreeProduct(product);
-        return freeProduct * product.getPrice();
-
+        return format(freeProduct * product.getPrice());
     }
 
     private CartItem cartItemFor(Product product, int quantity) {

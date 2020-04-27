@@ -22,8 +22,9 @@ public class CartItem {
         return product.getPrice() * quantity;
     }
 
-    public int getOnlyOneFree() {
-        return product.getOneFree();
+    public int getFreeProduct() {
+        int quantityForFreeProduct = this.quantity;//3:
+        return quantityForFreeProduct / 3;
     }
 
     public int getQuantityOfProduct() {
