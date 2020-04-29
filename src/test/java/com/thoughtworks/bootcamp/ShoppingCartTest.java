@@ -269,6 +269,36 @@ public class ShoppingCartTest {
 
 
     }
+    @Test
+    void givenEmptyShoppingCart_whenAddTenAppleOneByOneAndThreeMaskWith_thenShouldReturnDiscountWithTenPercencent
+            () {
+        BuyXGetYFree buy2Get1 = new BuyXGetYFree(2, 1);
+        TenPercentPriceOffer tenPercentPriceOffer = new TenPercentPriceOffer(10.00, 10);
 
+        Product apple = new Product("Apple", 0.99, buy2Get1);
+        Product mask = new Product("Mask", 1.99);//null
+
+        ShoppingCart shoppingCart = new ShoppingCart(tenPercentPriceOffer);
+
+        shoppingCart.addCart(apple, 1);
+        shoppingCart.addCart(apple, 1);
+        shoppingCart.addCart(apple, 1);
+        shoppingCart.addCart(apple, 1);
+        shoppingCart.addCart(apple, 1);
+        shoppingCart.addCart(apple, 1);
+        shoppingCart.addCart(apple, 1);
+        shoppingCart.addCart(apple, 1);
+        shoppingCart.addCart(apple, 1);
+        shoppingCart.addCart(apple, 1);
+        shoppingCart.addCart(mask, 3);
+
+
+        Assertions.assertEquals(0.23, shoppingCart.getSalesTax());
+        Assertions.assertEquals(11.84, shoppingCart.getTotalCartWithTax());//11.61+0.23=11.84
+        Assertions.assertEquals("ShoppingCart{cartItems=[CartItem{product=Product{name='Apple', price=0.99}, quantity=10}, CartItem{product=Product{name='Mask', price=1.99}, quantity=3}]}", shoppingCart.toString());
+        Assertions.assertEquals(4.26, shoppingCart.ShoppingCartDiscount());
+
+
+    }
 
 }
