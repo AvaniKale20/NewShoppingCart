@@ -22,6 +22,7 @@ public class ShoppingCart {
     public ShoppingCart(TenPercentPriceOffer tenPercentPriceOffer) {
         this.tenPercentPriceOffer = tenPercentPriceOffer;
     }
+
     public void addCart(Product product, int quantity) {
         Optional<CartItem> existingItem = findItem(product);
         if (existingItem.isEmpty()) {
@@ -30,8 +31,8 @@ public class ShoppingCart {
         } else {
             existingItem.get().incrementQuantity(quantity);
         }
-        productTotal = cartItems.stream().mapToDouble(CartItem::getPriceTotal).sum();//getT
-        discountForProduct = discountForProduct();//getD
+        productTotal = productTotal();
+        discountForProduct = discountForProduct();
         discountForPrice = calculateShoppingCartDiscount();
         totalDiscount = format(discountForProduct + discountForPrice);
         tax = format(calculateSalesTax(productTotal, totalDiscount));
@@ -40,27 +41,16 @@ public class ShoppingCart {
 
     }
 
-    //
-//    private CartItem cartItemFor(Product product, int quantity) {
-//        CartItem cartItem = new CartItem(product, quantity);
-//        itemsTotal += cartItem.getPrice();
-//        tax = format(itemsTotal * SALES_TAX_PERCENT);
-//        total = itemsTotal + tax;
-//        for (CartItem item : cartItems) {
-//            if (item.isExists(product.getName())) {
-//                cartItem = item;
-//                break;
-//            }
-//        }
-//        return cartItem;
-//    }
-
     private Optional<CartItem> findItem(Product product) {
         return cartItems.stream().filter(cartItem -> cartItem.isExists(product)).findFirst();
     }
 
     private double discountForProduct() {
         return cartItems.stream().mapToDouble(CartItem::getDiscount).sum();
+    }
+
+    private double productTotal() {
+        return cartItems.stream().mapToDouble(CartItem::getPriceTotal).sum();
     }
 
     private double calculateShoppingCartDiscount() {
@@ -71,7 +61,7 @@ public class ShoppingCart {
         return Double.parseDouble(new DecimalFormat("##.##").format(value));
     }
 
-    //------
+    //------ public
     public double ShoppingCartDiscount() {
         return totalDiscount;
     }

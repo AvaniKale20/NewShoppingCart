@@ -1,5 +1,6 @@
 package com.thoughtworks.bootcamp;
 
+import com.thoughtworks.bootcamp.offer.BuyXGetYFree;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

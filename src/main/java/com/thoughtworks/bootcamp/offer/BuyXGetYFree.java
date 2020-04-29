@@ -1,4 +1,4 @@
-package com.thoughtworks.bootcamp;
+package com.thoughtworks.bootcamp.offer;
 
 public class BuyXGetYFree {
     private int buyMoreThanTwo;
@@ -10,12 +10,8 @@ public class BuyXGetYFree {
     }
 
     private int calculateFreeProduct(int quantity) {
-        return quantity / (buyMoreThanTwo + getFree) *getFree ;
+        return quantity / (buyMoreThanTwo + getFree) * getFree;
     }
-
-//    public int getBuyMoreThanTwo() {
-//        return buyMoreThanTwo;
-//    }
 
     public double calculateDiscountOnProduct(int quantity, double price) {
         if (quantity >= buyMoreThanTwo) {

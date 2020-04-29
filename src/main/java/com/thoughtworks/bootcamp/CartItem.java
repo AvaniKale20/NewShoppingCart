@@ -1,12 +1,12 @@
 package com.thoughtworks.bootcamp;
 
+import com.thoughtworks.bootcamp.offer.BuyXGetYFree;
 
 import java.util.Optional;
 
 public class CartItem {
     private Product product;
     private int quantity;
-    //    we have to update total and discount
     private Optional<Double> total = Optional.empty();
     private Optional<Double> totalDiscount = Optional.empty();
 
