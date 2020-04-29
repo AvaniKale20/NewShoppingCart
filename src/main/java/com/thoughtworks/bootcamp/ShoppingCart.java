@@ -1,10 +1,11 @@
 package com.thoughtworks.bootcamp;
 
+import com.thoughtworks.bootcamp.offer.TenPercentPriceOffer;
+
 import java.text.DecimalFormat;
 import java.util.*;
 
 public class ShoppingCart {
-    private static final double SALES_TAX = 0.02;
     private double tax = 0;
     private double differance = 0;
     private double totalWithTax = 0;
@@ -14,6 +15,7 @@ public class ShoppingCart {
     private List<CartItem> cartItems = new ArrayList<>();
     private double totalDiscount = 0;
     private TenPercentPriceOffer tenPercentPriceOffer;
+    private Utility utility = new Utility();
 
     public ShoppingCart() {
         this.tenPercentPriceOffer = null;
@@ -35,7 +37,7 @@ public class ShoppingCart {
         discountForProduct = discountForProduct();
         discountForPrice = calculateShoppingCartDiscount();
         totalDiscount = format(discountForProduct + discountForPrice);
-        tax = format(calculateSalesTax(productTotal, totalDiscount));
+        tax = format(utility.calculateSalesTax(productTotal, totalDiscount));
         differance = format(productTotal - totalDiscount);
         totalWithTax = format(differance + tax);
 
@@ -72,11 +74,6 @@ public class ShoppingCart {
 
     public double getTotalCartWithTax() {
         return format(totalWithTax);
-    }
-
-    //-- have to remove in onather class
-    public double calculateSalesTax(double productTotal, double totalDiscount) {
-        return SALES_TAX * (productTotal - totalDiscount);
     }
 
     @Override
