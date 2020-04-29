@@ -15,6 +15,10 @@ public class CartItem {
         this.quantity = quantity;
     }
 
+    private void updatedTotalPrice() {
+        total = Optional.of(product.getPrice() * quantity);
+    }
+
     public String getNamet() {
         return product.getName();
     }
@@ -28,17 +32,8 @@ public class CartItem {
 
     }
 
-    private void updatedTotalPrice() {
-        total = Optional.of(product.getPrice() * quantity);
-    }
-
-    public void discount() {
-        BuyXGetYFree buyXGetYFree = product.getOffer();
-        totalDiscount = Optional.of((((buyXGetYFree != null ? buyXGetYFree.calculateDiscountOnProduct(quantity, product.getPrice()) : 0))));
-    }
-
     public double getDiscount() {
-        discount();
+        calculateDiscountForProduct();
         return totalDiscount.get();
     }
 
@@ -46,6 +41,11 @@ public class CartItem {
         updatedTotalPrice();
         return total.get();
 
+    }
+
+    private void calculateDiscountForProduct() {
+        BuyXGetYFree buyXGetYFree = product.getOffer();
+        totalDiscount = Optional.of((((buyXGetYFree != null ? buyXGetYFree.calculateDiscountOnProduct(quantity, product.getPrice()) : 0))));
     }
 
     @Override

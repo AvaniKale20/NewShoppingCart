@@ -2,20 +2,19 @@ package com.thoughtworks.bootcamp;
 
 import com.thoughtworks.bootcamp.offer.TenPercentPriceOffer;
 
-import java.text.DecimalFormat;
 import java.util.*;
 
 public class ShoppingCart {
+    private final TenPercentPriceOffer tenPercentPriceOffer;
+    private Utility utility = new Utility();
+    private List<CartItem> cartItems = new ArrayList<>();
     private double tax = 0;
     private double differance = 0;
     private double totalWithTax = 0;
     private double productTotal = 0;
     private double discountForProduct = 0;
     private double discountForPrice = 0;
-    private List<CartItem> cartItems = new ArrayList<>();
     private double totalDiscount = 0;
-    private TenPercentPriceOffer tenPercentPriceOffer;
-    private Utility utility = new Utility();
 
     public ShoppingCart() {
         this.tenPercentPriceOffer = null;
@@ -36,10 +35,10 @@ public class ShoppingCart {
         productTotal = productTotal();
         discountForProduct = discountForProduct();
         discountForPrice = calculateShoppingCartDiscount();
-        totalDiscount = format(discountForProduct + discountForPrice);
-        tax = format(utility.calculateSalesTax(productTotal, totalDiscount));
-        differance = format(productTotal - totalDiscount);
-        totalWithTax = format(differance + tax);
+        totalDiscount = utility.format(discountForProduct + discountForPrice);
+        tax = utility.format(utility.calculateSalesTax(productTotal, totalDiscount));
+        differance = utility.format(productTotal - totalDiscount);
+        totalWithTax = utility.format(differance + tax);
 
     }
 
@@ -59,21 +58,17 @@ public class ShoppingCart {
         return tenPercentPriceOffer != null ? tenPercentPriceOffer.calculateDiscountForTotalPrice(productTotal - discountForProduct) : 0;
     }
 
-    private double format(double value) {
-        return Double.parseDouble(new DecimalFormat("##.##").format(value));
-    }
-
     //------ public
-    public double ShoppingCartDiscount() {
+    public double getTotalDiscount() {
         return totalDiscount;
     }
 
     public double getSalesTax() {
-        return format(tax);
+        return utility.format(tax);
     }
 
     public double getTotalCartWithTax() {
-        return format(totalWithTax);
+        return utility.format(totalWithTax);
     }
 
     @Override
